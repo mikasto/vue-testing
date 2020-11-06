@@ -1,0 +1,36 @@
+<html>
+<head></head>
+<body id="app">
+	<h1>{{ title }}</h1>
+
+	Counter: {{ counter }} <br>
+	<a v-bind:href="href">Dynamic link</span> <br>
+	<button v-on:click="clearCounter">clear Counter</button>
+
+	<script src="https://unpkg.com/vue@next"></script>
+	<script>
+		const App = {
+		  data() {
+			return {
+				title: 'Vue test',
+				counter: 3,
+				href: 'http://tests.tru/'
+			}
+		  },
+		  mounted() {
+			setInterval(() => {
+			  this.counter++;
+			  this.href += this.counter;
+			}, 1000)
+		  },
+		  methods: {
+			clearCounter() {
+			  this.counter = 0
+			}
+		  }
+		}
+		
+		Vue.createApp(App).mount('#app')
+	</script>
+</body>
+</html>
